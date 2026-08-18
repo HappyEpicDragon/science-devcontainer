@@ -46,15 +46,15 @@
   "http_proxy": "http://host.docker.internal:7890",
   "HTTPS_PROXY": "http://host.docker.internal:7890",
   "HTTP_PROXY": "http://host.docker.internal:7890",
-  "NO_PROXY": "localhost,127.0.0.1",
-  "CODEX_HOME": "/root/.codex",
-  "OPENAI_API_KEY": "${localEnv:OPENAI_API_KEY}",
+  "NO_PROXY": "localhost,127.0.0.1" //,
+  // "CODEX_HOME": "/root/.codex" ,
+  // "OPENAI_API_KEY": "${localEnv:OPENAI_API_KEY}",
   // Claude Code
-  "CLAUDE_CONFIG_DIR": "/root/.claude",
-  "ANTHROPIC_API_KEY": "${localEnv:ANTHROPIC_API_KEY}",
-  "ANTHROPIC_BASE_URL": "${localEnv:ANTHROPIC_BASE_URL}",
-  "ANTHROPIC_MODEL": "${localEnv:ANTHROPIC_MODEL}",
-  "ANTHROPIC_DEFAULT_SONNET_MODEL": "${localEnv:ANTHROPIC_DEFAULT_SONNET_MODEL}"
+  // "CLAUDE_CONFIG_DIR": "/root/.claude",
+  // "ANTHROPIC_API_KEY": "${localEnv:ANTHROPIC_API_KEY}",
+  // "ANTHROPIC_BASE_URL": "${localEnv:ANTHROPIC_BASE_URL}",
+  // "ANTHROPIC_MODEL": "${localEnv:ANTHROPIC_MODEL}",
+  // "ANTHROPIC_DEFAULT_SONNET_MODEL": "${localEnv:ANTHROPIC_DEFAULT_SONNET_MODEL}"
 },
 
   // "postCreateCommand": "npm config set proxy http://host.docker.internal:7890 && npm config set https-proxy http://host.docker.internal:7890 && npm install -g @openai/codex && npm install -g @anthropic-ai/claude-code && claude plugin marketplace add LigphiDonk/Oh-my--paper && claude plugin install omp@oh-my-paper",
