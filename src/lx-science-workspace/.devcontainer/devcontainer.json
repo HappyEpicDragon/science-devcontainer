@@ -22,13 +22,7 @@
     "source=codex-config-${templateOption:ProjectName},target=/root/.codex,type=volume",
 
     // claude code auth and sessions
-    "source=claude-config-${templateOption:ProjectName},target=/root/.claude,type=volume",
-
-    // omp compute-helper 配置（compute-nodes.json）持久化到 host
-    "source=${localEnv:HOME}/.viewerleaf,target=/root/.viewerleaf,type=bind",
-
-    // Directory 类型 marketplace（oh-my-paper）的源目录，路径保持一致
-    "source=${localEnv:HOME}/playground/oh-my-paper/Oh-my--paper,target=/home/lx/playground/oh-my-paper/Oh-my--paper,type=bind,readonly"
+    "source=claude-config-${templateOption:ProjectName},target=/root/.claude,type=volume"
   ],
 
   "runArgs": [
@@ -51,7 +45,7 @@
   "postCreateCommand": {
     "npm-proxy": "npm config set proxy http://host.docker.internal:7890 && npm config set https-proxy http://host.docker.internal:7890",
     "setup-tools": "npm install -g @openai/codex @anthropic-ai/claude-code && claude plugin marketplace add LigphiDonk/Oh-my--paper && claude plugin install omp@oh-my-paper",
-    "setup-skills": "npx skills add tanis90/pdf-converter-mineru"
+    "setup-skills": "npx skills add HappyEpicDragon/research_memory --skill '*' -y && npx skills add HappyEpicDragon/paper-deconstruct"
   },
 
   "customizations": {
