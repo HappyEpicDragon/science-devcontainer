@@ -1,0 +1,90 @@
+{
+  "name": "${templateOption:ProjectName}",
+
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "..",
+    "args": {
+      "HTTP_PROXY": "http://host.docker.internal:7890",
+      "HTTPS_PROXY": "http://host.docker.internal:7890",
+      "ALL_PROXY": "socks5://host.docker.internal:7890",
+      "NO_PROXY": "localhost,127.0.0.1,::1"
+    }
+  },
+
+  "workspaceFolder": "/workspace",
+
+  "mounts": [
+    // Codex
+    "source=${localWorkspaceFolder},target=/workspace,type=bind",
+    "source=${localEnv:HOME}/.codex,target=/root/.codex,type=bind",
+
+    // Claude Code config（容器以 root 运行，挂到 /root 即可）
+    "source=${localEnv:HOME}/.claude/.claude.json,target=/root/.claude/.claude.json,type=bind",
+    "source=${localEnv:HOME}/.claude/settings.json,target=/root/.claude/settings.json,type=bind",
+
+    // Claude Code 项目会话/记忆：named volume 隔离（关键！）
+    "source=claude-projects-${templateOption:ProjectName},target=/root/.claude/projects,type=volume",
+    "source=claude-sessions-${templateOption:ProjectName},target=/root/.claude/sessions,type=volume",
+
+    // omp compute-helper 配置（compute-nodes.json）持久化到 host
+    "source=${localEnv:HOME}/.viewerleaf,target=/root/.viewerleaf,type=bind",
+
+    // Directory 类型 marketplace（oh-my-paper）的源目录，路径保持一致
+    "source=${localEnv:HOME}/playground/oh-my-paper/Oh-my--paper,target=/home/lx/playground/oh-my-paper/Oh-my--paper,type=bind,readonly"
+  ],
+
+  "runArgs": [
+    "--add-host=host.docker.internal:host-gateway",
+    "--gpus",
+    "all"
+  ],
+
+
+"remoteEnv": {
+  "https_proxy": "http://host.docker.internal:7890",
+  "http_proxy": "http://host.docker.internal:7890",
+  "HTTPS_PROXY": "http://host.docker.internal:7890",
+  "HTTP_PROXY": "http://host.docker.internal:7890",
+  "NO_PROXY": "localhost,127.0.0.1",
+  "CODEX_HOME": "/root/.codex",
+  "OPENAI_API_KEY": "${localEnv:OPENAI_API_KEY}",
+  // Claude Code
+  "CLAUDE_CONFIG_DIR": "/root/.claude",
+  "ANTHROPIC_API_KEY": "${localEnv:ANTHROPIC_API_KEY}",
+  "ANTHROPIC_BASE_URL": "${localEnv:ANTHROPIC_BASE_URL}",
+  "ANTHROPIC_MODEL": "${localEnv:ANTHROPIC_MODEL}",
+  "ANTHROPIC_DEFAULT_SONNET_MODEL": "${localEnv:ANTHROPIC_DEFAULT_SONNET_MODEL}"
+},
+
+  // "postCreateCommand": "npm config set proxy http://host.docker.internal:7890 && npm config set https-proxy http://host.docker.internal:7890 && npm install -g @openai/codex && npm install -g @anthropic-ai/claude-code && claude plugin marketplace add LigphiDonk/Oh-my--paper && claude plugin install omp@oh-my-paper",
+
+  "postCreateCommand": {
+    "npm-proxy": "npm config set proxy http://host.docker.internal:7890 && npm config set https-proxy http://host.docker.internal:7890",
+    "setup-tools": "npm install -g @openai/codex @anthropic-ai/claude-code && claude plugin marketplace add LigphiDonk/Oh-my--paper && claude plugin install omp@oh-my-paper"
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "charliermarsh.ruff",
+        "renan-r-santos.pixi-code",
+        "ms-python.vscode-pylance",
+        "ms-python.python",
+        "ms-python.debugpy",
+        "ms-toolsai.jupyter",
+        "tobiastimm.matter",
+        "pkief.material-icon-theme",
+        "tomoki1207.pdf"
+      ],
+      "settings": {
+        "http.proxy": "http://host.docker.internal:7890",
+        "http.proxyStrictSSL": false,
+        "python.defaultInterpreterPath": "/workspace/.pixi/envs/default/bin/python",
+        "python.terminal.activateEnvironment": false
+      }
+    }
+  },
+
+  "forwardPorts": [8888]
+}
