@@ -15,17 +15,14 @@
   "workspaceFolder": "/workspace",
 
   "mounts": [
-    // Codex
+    // workfolder
     "source=${localWorkspaceFolder},target=/workspace,type=bind",
-    "source=${localEnv:HOME}/.codex,target=/root/.codex,type=bind",
 
-    // Claude Code config（容器以 root 运行，挂到 /root 即可）
-    "source=${localEnv:HOME}/.claude/.claude.json,target=/root/.claude/.claude.json,type=bind",
-    "source=${localEnv:HOME}/.claude/settings.json,target=/root/.claude/settings.json,type=bind",
+    // codex auth and 
+    "source=codex-config-${templateOption:ProjectName},target=/root/.codex,type=volume",
 
-    // Claude Code 项目会话/记忆：named volume 隔离（关键！）
-    "source=claude-projects-${templateOption:ProjectName},target=/root/.claude/projects,type=volume",
-    "source=claude-sessions-${templateOption:ProjectName},target=/root/.claude/sessions,type=volume",
+    // claude code auth and sessions
+    "source=claude-config-${templateOption:ProjectName},target=/root/.claude,type=volume",
 
     // omp compute-helper 配置（compute-nodes.json）持久化到 host
     "source=${localEnv:HOME}/.viewerleaf,target=/root/.viewerleaf,type=bind",
