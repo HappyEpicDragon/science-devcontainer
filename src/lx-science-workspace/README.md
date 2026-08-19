@@ -8,6 +8,7 @@ Personal Dev Container template for the LX development environment.
 - Node.js 22
 - Pixi
 - Python tooling through the target project's `pixi.toml`
+- TeX Live (`latexmk`, PDFLaTeX, XeLaTeX, LuaLaTeX, Biber, and Chinese typesetting)
 - Codex CLI and Claude Code setup
 - NVIDIA GPU support
 - Personal host configuration mounts
