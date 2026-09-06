@@ -25,7 +25,10 @@
     "source=claude-config-${templateOption:ProjectName},target=/root/.claude,type=volume",
 
     // Docker Engine socket from the host
-    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
+
+    // K3s kubeconfig copied from the Windows host
+    "source=${localEnv:USERPROFILE}/.kube,target=/root/.kube,type=bind"
   ],
 
   "runArgs": [
@@ -40,7 +43,8 @@
   "http_proxy": "http://host.docker.internal:7890",
   "HTTPS_PROXY": "http://host.docker.internal:7890",
   "HTTP_PROXY": "http://host.docker.internal:7890",
-  "NO_PROXY": "localhost,127.0.0.1"
+  "NO_PROXY": "localhost,127.0.0.1,::1,10.15.89.0/24",
+  "no_proxy": "localhost,127.0.0.1,::1,10.15.89.0/24"
 },
 
   "postCreateCommand": "bash .devcontainer/post-create.sh",
