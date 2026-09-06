@@ -1,6 +1,6 @@
 {
   "id": "lx-science-workspace",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "name": "LX Science Workspace",
   "description": "Personal development container with Ubuntu, Node.js, Pixi, Python, TeX Live, Codex and Claude Code.",
   "options": {
