@@ -22,7 +22,10 @@
     "source=codex-config-${templateOption:ProjectName},target=/root/.codex,type=volume",
 
     // claude code auth and sessions
-    "source=claude-config-${templateOption:ProjectName},target=/root/.claude,type=volume"
+    "source=claude-config-${templateOption:ProjectName},target=/root/.claude,type=volume",
+
+    // Docker Engine socket from the host
+    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
   ],
 
   "runArgs": [
