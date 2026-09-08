@@ -9,6 +9,7 @@ npm config set fetch-retries 2
 npm install -g \
   @openai/codex \
   @anthropic-ai/claude-code \
+  @xai-official/grok \
   --foreground-scripts \
   --loglevel verbose
 

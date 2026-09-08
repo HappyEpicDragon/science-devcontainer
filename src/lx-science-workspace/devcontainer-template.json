@@ -1,8 +1,8 @@
 {
   "id": "lx-science-workspace",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "name": "LX Science Workspace",
-  "description": "Personal development container with Ubuntu, Node.js, Pixi, Python, TeX Live, Codex and Claude Code.",
+  "description": "Personal development container with Ubuntu, Node.js, Pixi, Python, TeX Live, Codex, Claude Code and Grok Build.",
   "options": {
     "ProjectName": {
       "type": "string",
@@ -10,7 +10,7 @@
         "my-project"
       ],
       "default": "my-project",
-      "description": "Project name used to isolate persistent Claude volumes."
+      "description": "Project name used to isolate persistent AI coding agent volumes."
     }
   }
 }

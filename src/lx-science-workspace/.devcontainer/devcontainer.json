@@ -24,6 +24,9 @@
     // claude code auth and sessions
     "source=claude-config-${templateOption:ProjectName},target=/root/.claude,type=volume",
 
+    // Grok Build auth and sessions
+    "source=grok-config-${templateOption:ProjectName},target=/root/.grok,type=volume",
+
     // Docker Engine socket from the host
     "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
 
