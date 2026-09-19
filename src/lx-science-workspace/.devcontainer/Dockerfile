@@ -33,9 +33,9 @@ RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
 # Install pixi
 RUN curl -fsSL https://pixi.sh/install.sh | bash
 
-# Install Google Antigravity CLI without modifying shell profile files.
+# Install Google Antigravity CLI to the directory already exposed on PATH.
 RUN curl -fsSL https://antigravity.google/cli/install.sh \
-      | bash -s -- --skip-aliases --skip-path \
+      | bash -s -- --dir /root/.local/bin \
     && /root/.local/bin/agy --version
 
 ENV PATH="/root/.local/bin:/root/.pixi/bin:${PATH}"
