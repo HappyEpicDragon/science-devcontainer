@@ -33,8 +33,8 @@
     // Docker Engine socket from the host
     "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
 
-    // K3s kubeconfig copied from the Windows host
-    "source=${localEnv:HOME}/.kube,target=/root/.kube,type=bind"
+    // K3s kubeconfig from the host user profile
+    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.kube,target=/root/.kube,type=bind"
   ],
 
   "runArgs": [
