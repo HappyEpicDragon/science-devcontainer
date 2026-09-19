@@ -27,6 +27,9 @@
     // Grok Build auth and sessions
     "source=grok-config-${templateOption:ProjectName},target=/root/.grok,type=volume",
 
+    // Antigravity CLI settings, customizations, and session metadata
+    "source=antigravity-config-${templateOption:ProjectName},target=/root/.gemini,type=volume",
+
     // Docker Engine socket from the host
     "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
 
@@ -56,7 +59,13 @@
     "vscode": {
       "extensions": [
         "charliermarsh.ruff",
+        "docker.docker",
+        "GitHub.vscode-github-actions",
+        "ms-azuretools.vscode-containers",
+        "ms-kubernetes-tools.vscode-kubernetes-tools",
         "renan-r-santos.pixi-code",
+        "redhat.vscode-yaml",
+        "tamasfe.even-better-toml",
         "ms-python.vscode-pylance",
         "ms-python.python",
         "ms-python.debugpy",

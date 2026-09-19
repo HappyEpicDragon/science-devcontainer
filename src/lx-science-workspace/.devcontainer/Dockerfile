@@ -33,7 +33,19 @@ RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
 # Install pixi
 RUN curl -fsSL https://pixi.sh/install.sh | bash
 
-ENV PATH="/root/.pixi/bin:${PATH}"
+# Install Google Antigravity CLI without modifying shell profile files.
+RUN curl -fsSL https://antigravity.google/cli/install.sh \
+      | bash -s -- --skip-aliases --skip-path \
+    && /root/.local/bin/agy --version
+
+ENV PATH="/root/.local/bin:/root/.pixi/bin:${PATH}"
+
+# Seed persistent agent configuration volumes with quota status lines.
+COPY .devcontainer/agent-quota-statusline.js /usr/local/bin/agent-quota-statusline
+COPY .devcontainer/codex-config.toml /root/.codex/config.toml
+COPY .devcontainer/claude-settings.json /root/.claude/settings.json
+COPY .devcontainer/antigravity-settings.json /root/.gemini/antigravity-cli/settings.json
+RUN chmod +x /usr/local/bin/agent-quota-statusline
 
 # Install the Docker CLI only. The Docker daemon is provided by the host through
 # /var/run/docker.sock (Docker-outside-of-Docker).
@@ -56,4 +68,3 @@ RUN curl -fsSLo /usr/local/bin/kubectl \
     && kubectl version --client
 
 WORKDIR /workspace
-
