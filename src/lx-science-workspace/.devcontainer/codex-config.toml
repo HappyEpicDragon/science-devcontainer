@@ -1,7 +1,8 @@
 [tui]
 status_line = [
   "model-with-reasoning",
+  "used-tokens",
   "five-hour-limit",
   "weekly-limit",
-  "context-remaining",
+  "context-used",
 ]
