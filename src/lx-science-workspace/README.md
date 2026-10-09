@@ -9,7 +9,7 @@ Personal Dev Container template for the LX development environment.
 - Pixi
 - Python tooling through the target project's `pixi.toml`
 - TeX Live (`latexmk`, PDFLaTeX, XeLaTeX, LuaLaTeX, Biber, and Chinese typesetting)
-- Codex CLI, Claude Code, Grok Build, and Google Antigravity CLI (`agy`)
+- Codex CLI, Claude Code, Grok Build, PI Coding Agent (`pi`), and Google Antigravity CLI (`agy`)
 - NVIDIA GPU support
 - Personal host configuration mounts
 

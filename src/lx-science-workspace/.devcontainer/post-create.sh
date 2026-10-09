@@ -10,6 +10,7 @@ npm install -g \
   @openai/codex \
   @anthropic-ai/claude-code \
   @xai-official/grok \
+  @earendil-works/pi-coding-agent \
   --foreground-scripts \
   --loglevel verbose
 

@@ -1,0 +1,21 @@
+{
+  "providers": {
+    "local": {
+      "name": "Local llama.cpp",
+      "baseUrl": "http://10.19.138.42:8080/v1",
+      "apiKey": "HwQUrkAg3RWWWUvlCxjvzOEeYu-UklCPsNKuBpcF8RCQxxoO",
+      "api": "openai-completions",
+      "models": [
+        {
+          "id": "qwen3.8-flash-next-1m",
+          "name": "Qwen3.8 Flash Next 1M",
+          "reasoning": true,
+          "input": ["text", "image"],
+          "contextWindow": 1000000,
+          "maxTokens": 128000,
+          "thinkingLevelMap": { "max": "max" }
+        }
+      ]
+    }
+  }
+}

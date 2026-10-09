@@ -1,0 +1,6 @@
+{
+  "defaultProvider": "local",
+  "defaultModel": "qwen3.8-flash-next-1m",
+  "defaultThinkingLevel": "max",
+  "theme": "dark"
+}
