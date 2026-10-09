@@ -8,7 +8,7 @@
       "HTTP_PROXY": "http://host.docker.internal:7890",
       "HTTPS_PROXY": "http://host.docker.internal:7890",
       "ALL_PROXY": "socks5://host.docker.internal:7890",
-      "NO_PROXY": "localhost,127.0.0.1,::1,10.0.0.0/8"
+      "NO_PROXY": "localhost,127.0.0.1,::1,10.0.0.0/8,10.19.138.42"
     }
   },
 
@@ -52,8 +52,8 @@
   "http_proxy": "http://host.docker.internal:7890",
   "HTTPS_PROXY": "http://host.docker.internal:7890",
   "HTTP_PROXY": "http://host.docker.internal:7890",
-  "NO_PROXY": "localhost,127.0.0.1,::1,10.0.0.0/8",
-  "no_proxy": "localhost,127.0.0.1,::1,10.0.0.0/8"
+  "NO_PROXY": "localhost,127.0.0.1,::1,10.0.0.0/8,10.19.138.42",
+  "no_proxy": "localhost,127.0.0.1,::1,10.0.0.0/8,10.19.138.42"
 },
 
   "postCreateCommand": "bash .devcontainer/post-create.sh",
