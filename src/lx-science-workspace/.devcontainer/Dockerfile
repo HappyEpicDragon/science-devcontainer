@@ -65,7 +65,9 @@ RUN install -m 0755 -d /etc/apt/keyrings \
 # Match the K3s cluster's Kubernetes minor version and expose kubectl to the
 # workspace. The client only talks to the remote K3s API server.
 ARG KUBECTL_VERSION=v1.36.4
-RUN curl -fsSLo /usr/local/bin/kubectl \
+# Avoid intermittent TLS failures through the host proxy for Kubernetes downloads.
+RUN curl --noproxy '.k8s.io' --retry 3 --retry-all-errors \
+      --connect-timeout 20 --max-time 300 -fsSLo /usr/local/bin/kubectl \
       "https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl" \
     && chmod +x /usr/local/bin/kubectl \
     && kubectl version --client
