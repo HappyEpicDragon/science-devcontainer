@@ -48,6 +48,7 @@ COPY .devcontainer/antigravity-settings.json /root/.gemini/antigravity-cli/setti
 COPY .devcontainer/grok-config.toml /root/.grok/config.toml
 COPY .devcontainer/pi-models.json /root/.pi/agent/models.json
 COPY .devcontainer/pi-settings.json /root/.pi/agent/settings.json
+COPY .devcontainer/pi-quota-statusline.js /root/.pi/agent/extensions/quota-statusline.js
 RUN chmod +x /usr/local/bin/agent-quota-statusline
 
 # Install the Docker CLI only. The Docker daemon is provided by the host through
