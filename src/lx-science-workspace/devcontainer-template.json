@@ -1,6 +1,6 @@
 {
   "id": "lx-science-workspace",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "name": "LX Science Workspace",
   "description": "Personal development container with Ubuntu, Node.js, Pixi, Python, TeX Live, Codex, Claude Code, Grok Build, PI Coding Agent and Google Antigravity CLI.",
   "options": {
