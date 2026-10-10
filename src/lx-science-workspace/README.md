@@ -10,6 +10,7 @@ Personal Dev Container template for the LX development environment.
 - Python tooling through the target project's `pixi.toml`
 - TeX Live (`latexmk`, PDFLaTeX, XeLaTeX, LuaLaTeX, Biber, and Chinese typesetting)
 - Codex CLI, Claude Code, Grok Build, PI Coding Agent (`pi`), and Google Antigravity CLI (`agy`)
+- Wayland clipboard tools (`wl-copy` and `wl-paste`) for PI Coding Agent
 - NVIDIA GPU support
 - Personal host configuration mounts
 
@@ -28,3 +29,6 @@ after the agent receives its first response, and quota values only appear when t
 authentication method exposes subscription limits.
 
 This template intentionally does not run `pixi install`; the target project's environment can be installed separately when needed.
+
+Clipboard operations require access to the host Wayland display, such as the WSLg socket
+forwarded by VS Code Dev Containers.

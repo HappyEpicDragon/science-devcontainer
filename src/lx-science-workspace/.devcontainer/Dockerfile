@@ -72,4 +72,11 @@ RUN curl --noproxy '.k8s.io' --retry 3 --retry-all-errors \
     && chmod +x /usr/local/bin/kubectl \
     && kubectl version --client
 
+# Provide Wayland clipboard commands used by PI Coding Agent.
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends wl-clipboard \
+    && wl-copy --version \
+    && wl-paste --version \
+    && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /workspace
